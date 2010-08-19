@@ -1,0 +1,11 @@
+--- config.def.h	Fri Jul 18 20:18:45 2008 +0100
++++ config.def.h	Tue Jul 22 11:21:22 2008 +0300
+@@ -67,6 +67,8 @@
+ 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+ 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
+ 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
++	{ MODKEY,			XK_Left,   view_prev_tag,  {0} },
++	{ MODKEY,			XK_Right,  view_next_tag,  {0} },
+ 	TAGKEYS(                        XK_1,                      0)
+ 	TAGKEYS(                        XK_2,                      1)
+ 	TAGKEYS(                        XK_3,                      2)

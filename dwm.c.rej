@@ -1,0 +1,12 @@
+--- dwm.c	Fri Jul 18 20:18:45 2008 +0100
++++ dwm.c	Tue Jul 22 11:21:22 2008 +0300
+@@ -197,6 +197,9 @@
+ static void updatetitle(Client *c);
+ static void updatewmhints(Client *c);
+ static void view(const Arg *arg);
++static void view_next_tag(const Arg *);
++static void view_prev_tag(const Arg *);
++static void view_adjacent_tag(int);
+ static int xerror(Display *dpy, XErrorEvent *ee);
+ static int xerrordummy(Display *dpy, XErrorEvent *ee);
+ static int xerrorstart(Display *dpy, XErrorEvent *ee);
