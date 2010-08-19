@@ -1,5 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
+/* Test comment by Hannu */
+
 /* appearance */
 static const char font[]            = "-*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*";
 static const char normbordercolor[] = "#cccccc";
