@@ -236,6 +236,9 @@ static void updatestatus(void);
 static void updatetitle(Client *c);
 static void updatewmhints(Client *c);
 static void view(const Arg *arg);
+static void view_next_tag(const Arg *);
+static void view_prev_tag(const Arg *);
+static void view_adjacent_tag(int);
 static Client *wintoclient(Window w);
 static Monitor *wintomon(Window w);
 static int xerror(Display *dpy, XErrorEvent *ee);
@@ -949,6 +952,39 @@ gettextprop(Window w, Atom atom, char *text, unsigned int size) {
 
 void
 grabbuttons(Client *c, Bool focused) {
+	int i, j;
+	unsigned int buttons[] = { Button1, Button2, Button3 };
+
+#define XGRAB(button, modifier) \
+	XGrabButton(dpy, (button), (modifier), c->win, False,\
+	    BUTTONMASK, GrabModeAsync, GrabModeSync, None, None)
+ 
+ 	XUngrabButton(dpy, AnyButton, AnyModifier, c->win);
+
+	if (!focused) {
+		XGRAB(AnyButton, AnyButton);
+		return;
+	}
+
+	/*
+	 * GrabButtons so that for each modifier we also allow
+	 * CapsLock and NumLock to be locked.
+	 */
+	for(i = 0; i < LENGTH(buttons); i++) {
+		for(j = 0; j < LENGTH(modkeys); j++) {
+			XGRAB(buttons[i], modkeys[j]);
+			XGRAB(buttons[i], modkeys[j] | LockMask);
+			XGRAB(buttons[i], modkeys[j] | numlockmask);
+			XGRAB(buttons[i],
+			    modkeys[j] | numlockmask | LockMask);
+		}
+	}
+#undef XGRAB
+}
+
+/*
+void
+grabbuttons(Client *c, Bool focused) {
 	updatenumlockmask();
 	{
 		unsigned int i, j;
@@ -968,6 +1004,7 @@ grabbuttons(Client *c, Bool focused) {
 			            BUTTONMASK, GrabModeAsync, GrabModeSync, None, None);
 	}
 }
+*/
 
 void
 grabkeys(void) {

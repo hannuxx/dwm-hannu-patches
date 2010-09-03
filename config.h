@@ -1,11 +1,10 @@
 /* See LICENSE file for copyright and license details. */
 
-/* Test comment by Hannu */
-
 /* appearance */
-static const char font[]            = "-*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*";
+/*static const char font[]            = "-*-terminus-medium-r-*-*-18-*-*-*-*-*-*-*"; */
+static const char font[]            = "-*-courier new-normal-r-normal-*-12-*-*-*-*-*-*-*";
 static const char normbordercolor[] = "#cccccc";
-static const char normbgcolor[]     = "#cccccc";
+static const char normbgcolor[]     = "#ffffff";
 static const char normfgcolor[]     = "#000000";
 static const char selbordercolor[]  = "#0066ff";
 static const char selbgcolor[]      = "#0066ff";
@@ -16,7 +15,7 @@ static const Bool showbar           = True;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "1*Work", "2*Web", "3*Personal" };
 
 static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
@@ -36,7 +35,11 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-#define MODKEY Mod1Mask
+#define MODKEY	Mod1Mask
+#define MODKEY2	Mod5Mask	/* Alt Gr for left handed people */
+
+static int modkeys[] = { MODKEY, MODKEY2 };
+
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
@@ -49,11 +52,19 @@ static const Layout layouts[] = {
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "uxterm", NULL };
+static const char *termcmd2[]  = { "xterm", NULL };
+static const char *termcmd3[]  = { "gnome-terminal", NULL };
+static const char *browsercmd_g[]  = { "google-chrome", NULL };
+static const char *browsercmd_f[]  = { "firefox", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask|ControlMask, XK_Return, spawn,          {.v = termcmd2 } },
+	{ MODKEY|ControlMask,           XK_Return, spawn,     	   {.v = termcmd3 } },
+	{ MODKEY|ControlMask,           XK_f, spawn,               {.v = browsercmd_f } },
+	{ MODKEY|ControlMask,           XK_g, spawn,               {.v = browsercmd_g } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -68,6 +79,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
+	{ MODKEY|ControlMask,           XK_Left,   view_prev_tag,  {0} },
+	{ MODKEY|ControlMask,           XK_Right,  view_next_tag,  {0} },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
