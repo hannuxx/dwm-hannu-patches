@@ -53,7 +53,7 @@ static int modkeys[] = { MODKEY, MODKEY2 };
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "urxvt", NULL};
-static const char *termcmd2[]  = { "rxvt", NULL };
+static const char *termcmd2[]  = { "rxvt-unicode", "-fade", 50, NULL};
 static const char *termcmd3[] = { "uxterm", NULL};
 static const char *browsercmd_g[]  = { "google-chrome", NULL };
 static const char *browsercmd_f[]  = { "firefox", NULL };
