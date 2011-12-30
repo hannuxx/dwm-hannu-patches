@@ -1,9 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-/*static const char font[]            = "-*-terminus-medium-r-*-*-18-*-*-*-*-*-*-*"; */
 static const char font[]            = "-*-courier new-normal-r-normal-*-12-*-*-*-*-*-*-*";
-//static const char normbordercolor[] = "#cccccc";
 static const char normbordercolor[] = "#2F5B8B"; // Dark blue
 static const char normbgcolor[]     = "#2F5B8B"; // Dark blue
 static const char normfgcolor[]     = "#0DCEF8"; // Cyan
@@ -53,8 +51,8 @@ static int modkeys[] = { MODKEY, MODKEY2 };
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "urxvt", NULL};
-static const char *termcmd2[]  = { "rxvt-unicode", "-fade", 50, NULL};
-static const char *termcmd3[] = { "uxterm", NULL};
+static const char *termcmd2[]  = { "rxvt-unicode", "-fade", "50", NULL};
+static const char *termcmd3[]  = { "rxvt-unicode", "-fade", "50", NULL};
 static const char *browsercmd_g[]  = { "google-chrome", NULL };
 static const char *browsercmd_f[]  = { "firefox", NULL };
 static const char *calcmd_n[]  = { "urxvt", "-e", "nc", NULL };
