@@ -50,24 +50,28 @@ static int modkeys[] = { MODKEY, MODKEY2 };
 
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[]  = { "xterm", NULL};
-static const char *termcmd2[]  = { "xterm", NULL};
-static const char *termcmd3[]  = { "urxvt", "-fade", "50", NULL};
-static const char *browsercmd_g[]  = { "google-chrome", NULL };
-static const char *browsercmd_f[]  = { "firefox", NULL };
-static const char *calcmd_n[]  = { "urxvt", "-e", "nc", NULL };
-static const char *lock_cmd[]  = { "/usr/local/bin/xlock", NULL };
+static const char *cmd_term[]  = { "st", NULL};
+static const char *cmd_term2[]  = { "xterm", NULL};
+static const char *cmd_term3[]  = { "terminator", "-b", NULL, NULL};
+static const char *cmd_filemgr[]  = { "thunar", NULL };
+static const char *cmd_nitrogen[]  = { "nitrogen", NULL };
+static const char *cmd_shot_desktop[]  = { "sh", "-c", "scrot desktop.png && display -resize -50% desktop.png", NULL };
+static const char *cmd_shot_window[]  = { "sh", "-c", "scrot -u window.png && display -resize -50% window.png", NULL };
+static const char *cmd_browser[]  = { "firefox", NULL };
+static const char *cmd_lock[]  = { "xlock", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function     	argument */
 	{ MODKEY,                       XK_p,      spawn,       	{.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,       	{.v = termcmd } },
-	{ MODKEY|ShiftMask|ControlMask, XK_Return, spawn,       	{.v = termcmd2 } },
-	{ MODKEY|ControlMask,           XK_Return, spawn,     		{.v = termcmd3 } },
-	{ MODKEY|ControlMask,           XK_f, 	   spawn,		{.v = browsercmd_f } },
-	{ MODKEY|ControlMask,           XK_g,      spawn,       	{.v = browsercmd_g } },
-	{ MODKEY|ControlMask,           XK_n,      spawn,       	{.v = calcmd_n } },
-	{ MODKEY|ControlMask, 		XK_l,      spawn,       	{.v = lock_cmd } },
+	{ MODKEY|ShiftMask,             XK_Return, spawn,       	{.v = cmd_term } },
+	{ MODKEY|ShiftMask|ControlMask, XK_Return, spawn,       	{.v = cmd_term2 } },
+	{ MODKEY|ControlMask,           XK_Return, spawn,     		{.v = cmd_term3 } },
+	{ MODKEY|ControlMask,           XK_f, 	   spawn,		{.v = cmd_filemgr } },
+	{ MODKEY|ControlMask,           XK_n, 	   spawn,		{.v = cmd_nitrogen } },
+	{ MODKEY|ControlMask,           XK_w, 	   spawn,		{.v = cmd_browser } },
+	{ MODKEY,		        XK_Print,  spawn,		{.v = cmd_shot_desktop } },
+	{ MODKEY|ShiftMask,	 	XK_Print,  spawn,		{.v = cmd_shot_window } },
+	{ MODKEY|ControlMask, 		XK_l,      spawn,       	{.v = cmd_lock } },
 	{ MODKEY,                       XK_b,      togglebar,   	{0} },
 	{ MODKEY,                       XK_j,      focusstack,  	{.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,		{.i = -1 } },
@@ -108,7 +112,7 @@ static Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
-	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
+	{ ClkStatusText,        0,              Button2,        spawn,          {.v = cmd_term } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
