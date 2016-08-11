@@ -14,7 +14,7 @@ static const Bool showbar           = True;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
 
 /* tagging */
-static const char *tags[] = { "1*System", "2*SB", "3*Devices", "4*Mail", "5*IM", "6*Web", "7*Personal" };
+static const char *tags[] = { "1*System", "2*Devices", "3*IM", "4*Web", "5*Personal" };
 
 static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
@@ -53,12 +53,12 @@ static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, 
 static const char *cmd_term[]  = { "st", NULL};
 static const char *cmd_term2[]  = { "xterm", NULL};
 static const char *cmd_term3[]  = { "terminator", "-b", NULL, NULL};
-static const char *cmd_filemgr[]  = { "thunar", NULL };
-static const char *cmd_nitrogen[]  = { "nitrogen", NULL };
+static const char *cmd_filemgr[]  = { "rox-filer", NULL };
+static const char *cmd_wallpaper[]  = { "nitrogen", NULL };
 static const char *cmd_shot_desktop[]  = { "sh", "-c", "scrot desktop.png && display -resize -50% desktop.png", NULL };
 static const char *cmd_shot_window[]  = { "sh", "-c", "scrot -u window.png && display -resize -50% window.png", NULL };
 static const char *cmd_browser[]  = { "firefox", NULL };
-static const char *cmd_lock[]  = { "xlock", NULL };
+static const char *cmd_lock[]  = { "slock", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function     	argument */
@@ -67,7 +67,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask|ControlMask, XK_Return, spawn,       	{.v = cmd_term2 } },
 	{ MODKEY|ControlMask,           XK_Return, spawn,     		{.v = cmd_term3 } },
 	{ MODKEY|ControlMask,           XK_f, 	   spawn,		{.v = cmd_filemgr } },
-	{ MODKEY|ControlMask,           XK_n, 	   spawn,		{.v = cmd_nitrogen } },
+	{ MODKEY|ControlMask,           XK_n, 	   spawn,		{.v = cmd_wallpaper } },
 	{ MODKEY|ControlMask,           XK_w, 	   spawn,		{.v = cmd_browser } },
 	{ MODKEY,		        XK_Print,  spawn,		{.v = cmd_shot_desktop } },
 	{ MODKEY|ShiftMask,	 	XK_Print,  spawn,		{.v = cmd_shot_window } },
@@ -102,7 +102,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      	6)
 	TAGKEYS(                        XK_8,                      	7)
 	TAGKEYS(                        XK_9,                      	8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           	{0} },
+	{ MODKEY|ShiftMask,             XK_q,		quit,			{0} },
 };
 
 /* button definitions */
