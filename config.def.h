@@ -14,7 +14,7 @@ static const Bool showbar           = True;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
 
 /* tagging */
-static const char *tags[] = { "1*System", "2*Devices", "3*IM", "4*Web" };
+static const char *tags[] = { "1*System", "2*Media", "3*Web" };
 
 static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
@@ -50,9 +50,9 @@ static int modkeys[] = { MODKEY, MODKEY2 };
 
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char *cmd_term[]  = { "st", NULL};
+static const char *cmd_term[]  = { "terminator", NULL};
 static const char *cmd_term2[]  = { "xterm", NULL};
-static const char *cmd_term3[]  = { "terminator", "-b", NULL, NULL};
+static const char *cmd_term3[]  = { "st", "-b", NULL, NULL};
 static const char *cmd_filemgr[]  = { "rox-filer", NULL };
 static const char *cmd_wallpaper[]  = { "nitrogen", NULL };
 static const char *cmd_shot_desktop[]  = { "sh", "-c", "scrot desktop.png && display -resize -50% desktop.png", NULL };
