@@ -1,0 +1,13 @@
+#!/bin/sh
+
+feh --bg-center /home/hannu/Pictures/Wallpapers/aerial_view_of_new_york_city_tilt_shift_photography-wallpaper-1920x1200.png
+
+unclutter -root -idle 3 &
+
+# Start `dwm` with a modified status bar
+while true; do
+  xsetroot -name "$(date '+%d %b %Y') | $(date '+%H:%M')"
+  sleep 10s
+done & exec dwm
+
+
