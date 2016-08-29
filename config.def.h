@@ -7,12 +7,13 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
-static const char col_norm_fg[]     = "#bbbbbb";
-static const char col_norm_bg[]     = "#000000";
-static const char col_norm_bor[]    = "#f0f0f0";
-static const char col_sel_fg[]      = "#c00c00";
-static const char col_sel_bg[]      = "#cfcfcf";
-static const char col_sel_bor[]     = "#ffffff";
+
+static const char col_norm_fg[]     = "#0dcef8"; // Cyan
+static const char col_norm_bg[]     = "#2f5b8b"; // Dark blue
+static const char col_norm_bor[]    = "#2f5b8b"; // Dark blue
+static const char col_sel_fg[]      = "#ffffff"; // White
+static const char col_sel_bg[]      = "#2f5b8b"; // Darker cyan
+static const char col_sel_bor[]     = "#879ecc"; // Darker bluish
 static const char *colors[SchemeLast][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_norm_fg, col_norm_bg, col_norm_bor },
