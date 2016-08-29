@@ -8,12 +8,18 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
 
-static const char col_norm_fg[]     = "#0dcef8"; // Cyan
-static const char col_norm_bg[]     = "#2f5b8b"; // Dark blue
-static const char col_norm_bor[]    = "#2f5b8b"; // Dark blue
-static const char col_sel_fg[]      = "#ffffff"; // White
-static const char col_sel_bg[]      = "#2f5b8b"; // Darker cyan
-static const char col_sel_bor[]     = "#879ecc"; // Darker bluish
+//static const char col_norm_fg[]     = "#0dcef8"; // Cyan
+//static const char col_norm_bg[]     = "#2f5b8b"; // Darker cyan
+//static const char col_norm_bor[]    = "#2f5b8b"; // Darker cyan
+//static const char col_sel_fg[]      = "#ffffff"; // White
+//static const char col_sel_bg[]      = "#2f5b8b"; // Darker cyan
+//static const char col_sel_bor[]     = "#879ecc"; // Darker bluish
+static const char col_norm_fg[]     = "#dadada"; // Whitish
+static const char col_norm_bg[]     = "#00020e"; // Blackish
+static const char col_norm_bor[]    = "#00020e"; // Blackish
+static const char col_sel_fg[]      = "#d0d0d0"; // Whitish
+static const char col_sel_bg[]      = "#00264d"; // Darkish cyan
+static const char col_sel_bor[]     = "#00264d"; // Darkish cyan
 static const char *colors[SchemeLast][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_norm_fg, col_norm_bg, col_norm_bor },
