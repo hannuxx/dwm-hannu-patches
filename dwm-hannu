@@ -5,9 +5,13 @@ feh --bg-center /home/hannu/Pictures/Wallpapers/aerial_view_of_new_york_city_til
 unclutter -root -idle 3 &
 
 # Start `dwm` with a modified status bar
-while true; do
-  xsetroot -name "$(date '+%d %b %Y') | $(date '+%H:%M')"
-  sleep 10s
-done & exec dwm
+while true
+do
+    DATE=$(date +"%Y-%m-%d %I:%M")
+    BAT=$(acpi -b | awk '{ print $4 }' | tr -d ',')
+    xsetroot -name "$BAT $DATE"
+    sleep 1m
+done &
+exec dwm
 
 
