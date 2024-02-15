@@ -1,0 +1,5 @@
+#!/bin/sh
+echo "$(date): Starting dwn" >> /path/to/logs/$(date +%Y-%m-%d_%H.dwm.log)
+dwm >> /path/to/logs/$(date +%Y-%m-%d_%H.dwm.log) 2>&1
+
+
